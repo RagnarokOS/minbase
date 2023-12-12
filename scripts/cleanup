@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# $Ragnarok: cleanup,v 1.1 2023/12/12 19:11:44 lecorbeau Exp $
+# cleanup: remove the files generated during the creation of a package
+# or release. On systems made to build releases, running this isn't
+# recommended as these files are useful to check for updates. On such
+# systems, it's therefore recommended to only run 'make clean' before
+# creating a fresh release.
+
+DIR="$1"
+
+# Remove the files, if they exist.
+for _file in *.asc *.build *.dsc *.tar.gz *.tar.xz; do
+	if [ -f "${DIR}/${_file}" ]; then
+		/bin/rm "${DIR}/${_file}"
+	fi
+done
+
+# Do the same for the source directory.
+if [ -d "${DIR}/${DIR}-*" ]; then
+	/bin/rm -r "${DIR}/${DIR}-*"
+fi

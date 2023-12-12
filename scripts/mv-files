@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# $Ragnarok: mv-files,v 1.1 2023/12/12 19:11:24 lecorbeau Exp $
+# mv-files: move the buildinfo, changes and .debs to the 'packages' directory
+
+set -e
+
+DIR="$1"
+PKG_DIR="${PKG_DIR:-/usr/src/ragnarok/packages}"
+
+/usr/bin/mkdir -p "${PKG_DIR}"
+for _file in *.buildinfo *.changes *.deb; do
+	/bin/mv "${DIR}/$_file" "${PKG_DIR}"
+done
