@@ -1,1 +1,9 @@
 RCS/
+**/*.asc
+**/*.deb
+**/*.udeb
+**/*.dsc
+**/*.build
+**/*.buildinfo
+**/*.tar.gz
+**/*.tar.xz
