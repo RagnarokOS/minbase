@@ -1,8 +1,8 @@
-# Global Makefile for shadow
-# $Ragnarok: Makefile,v 1.2 2023/12/13 16:10:42 lecorbeau Exp $
+# Global Makefile for ncurses
+# $Ragnarok: Makefile,v 1.1 2023/12/13 16:18:32 lecorbeau Exp $
 
-PKG	= shadow
-VERSION	= 4.13+dfsg1
+PKG	= ncurses
+VERSION	= 6.4
 
 DEBIAN	= changelog control rules
 
