@@ -1,8 +1,8 @@
-# Global Makefile for ncurses
-# $Ragnarok: Makefile,v 1.2 2023/12/13 16:26:17 lecorbeau Exp $
+# Global Makefile for findutils
+# $Ragnarok: Makefile,v 1.2 2023/12/13 16:25:18 lecorbeau Exp $
 
-PKG	= ncurses
-VERSION	= 6.4
+PKG	= findutils
+VERSION	= 4.9.0
 
 DEBIAN	= changelog control rules
 
@@ -14,4 +14,4 @@ deb: src
 		/usr/bin/debuild -i -us -uc -b
 
 src:
-	/usr/bin/apt-get source ncurses
+	/usr/bin/apt-get source findutils
