@@ -130,7 +130,8 @@ with_mouse = --without-sysmouse
 endif
 endif
 
-CONFARGS =	--prefix=/usr \
+CONFARGS =	CC=clang CXX=clang++ \
+		--prefix=/usr \
 		--build=$(DEB_BUILD_GNU_TYPE) \
 		--with-shared \
 		--mandir=/usr/share/man \
