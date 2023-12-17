@@ -1,3 +1,13 @@
+perl (5.36.0-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of perl for Ragnarok
+  * Differences from Debian's build:
+    - none aside for the version string set to the standard
+      99ragnarokVERSION to ensure Ragnarok's package always
+      takes precedence.
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Sun, 17 Dec 2023 12:54:37 -0500
+
 perl (5.36.0-7+deb12u1) bookworm; urgency=medium
 
   * [SECURITY] CVE-2023-47038: Write past buffer end via illegal

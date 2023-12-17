@@ -1,10 +1,10 @@
 # Global Makefile for perl
-# $Ragnarok: Makefile,v 1.1 2023/12/17 17:40:34 lecorbeau Exp $
+# $Ragnarok: Makefile,v 1.2 2023/12/17 19:34:26 lecorbeau Exp $
 
 PKG	= perl
 VERSION	= 5.36.0
 
-DEBIAN	= changelog control
+DEBIAN	= changelog control rules
 
 # Building a deb package
 deb: src
