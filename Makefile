@@ -1,14 +1,14 @@
 # Build all packages
-# $Ragnarok: Makefile,v 1.1 2023/12/12 19:12:25 lecorbeau Exp $
+# $Ragnarok: Makefile,v 1.3 2023/12/18 17:16:41 lecorbeau Exp $
 
 MAKE	= make -C
 
-SUBDIRS	= bash coreutils dash debianutils diffutils hostname procps \
-	  util-linux e2fsprogs debconf dpkg base-passwd
+SUBDIRS	= base-files base-passwd bash coreutils dash debianutils diffutils \
+	  hostname perl procps util-linux e2fsprogs debconf dpkg
 
 # Get the build dependencies which are not part of base.
 build-deps:
-	for _dir in ${SUBDIR}; do \
+	for _dir in ${SUBDIRS}; do \
 		srcipts/get-build-deps $$_dir; \
 		done
 
