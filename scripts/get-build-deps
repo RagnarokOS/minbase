@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# $Ragnarok: get-build-deps,v 1.1 2023/12/12 19:11:38 lecorbeau Exp $
+# $Ragnarok: get-build-deps,v 1.2 2023/12/18 17:29:59 lecorbeau Exp $
 #
 # get-build-deps: use a control file to create a metapackage for the build
 # dependencies of packages. Most build-deps are going to be part of the base
@@ -8,10 +8,17 @@
 
 PKG="$1"
 
+# If ${PKG}/control isn't there, use the one in the debian directory
+if  [ -f "${PKG}/control" ]; then
+	CONTROL="${PKG}/control"
+else
+	CONTROL="${PKG}/debian/control"
+fi
+
 # Make sure equivs is installed
 if [ ! -f /usr/bin/equivs-build ]; then
 	/usr/bin/apt-get install --no-install-recommends equivs -y
 fi
 
 # Create the metapackage and install it
-/usr/bin/mk-build-deps --install "${PKG}/control"
+/usr/bin/mk-build-deps --install "$CONTROL"
