@@ -1,3 +1,9 @@
+base-files (12.4-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of base-files for Ragnarok
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Wed, 20 Dec 2023 12:49:00 -0500
+
 base-files (12.4+deb12u4) bookworm; urgency=medium
 
   * Change /etc/debian_version to 12.4, for Debian 12.4 point release.
