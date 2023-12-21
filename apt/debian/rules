@@ -6,6 +6,7 @@ export DEB_CFLAGS_MAINT_APPEND := -flto=thin
 export DEB_LDFLAGS_MAINT_APPEND := -Wl,--as-needed -flto=thin -Wl,-O2
 export DEB_BUILD_MAINT_OPTIONS := hardening=+all
 export CC=clang
+export CXX=clang++
 
 # do not fail as we are just experimenting with symbol files for now
 export DPKG_GENSYMBOLS_CHECK_LEVEL=0
