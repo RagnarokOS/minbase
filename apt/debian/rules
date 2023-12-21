@@ -2,7 +2,7 @@
 # Copyright (C) 2009, 2016 Julian Andres Klode <jak@debian.org>
 #
 # Free Software, licensed under the GPL-2 or (at your option) any later version.
-export DEB_CFLAGS_MAINT_APPEND := -flto=thin
+export DEB_CXXFLAGS_MAINT_APPEND := -flto=thin
 export DEB_LDFLAGS_MAINT_APPEND := -Wl,--as-needed -flto=thin -Wl,-O2
 export DEB_BUILD_MAINT_OPTIONS := hardening=+all
 export CC=clang
