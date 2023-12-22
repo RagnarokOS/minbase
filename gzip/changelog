@@ -1,3 +1,13 @@
+gzip (1.12-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of gzip for Ragnarok
+  * Differences with Debian's build:
+    - Built with Clang
+    - adds extra hardening options (see etc/dpkg/buildflags.conf)
+    - Uses ThinLTO
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Fri, 22 Dec 2023 11:32:53 -0500
+
 gzip (1.12-1) sid; urgency=high
 
   * new upstream release
