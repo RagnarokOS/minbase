@@ -1,3 +1,14 @@
+apt (2.6.1-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of apt for Ragnarok
+  * Differences with Debian's build:
+    - built with clang
+    - adds extra hardening options (see etc/dpkg/buildflags.conf)
+    - uses ThinLTO
+    - built without systemd
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Thu, 21 Dec 2023 12:29:47 -0500
+
 apt (2.6.1) unstable; urgency=medium
 
   * Restore adduser dependency for bookworm.
