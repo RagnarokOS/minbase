@@ -1,0 +1,25 @@
+The debian/patches/1019724-handle-backslash-warning.patch is faulty.
+The whole code should be enclosed in brackets or else compilation will
+fail when using clang (which is not as tolerant as gcc with these things).
+
+This patch adds the brackets and fixes the issue.
+
+--- dfa.c.orig	2023-12-20 14:02:43.000000000 -0500
++++ dfa.c	2023-12-21 19:05:12.699233418 -0500
+@@ -1546,7 +1546,7 @@
+         default_case:
+           if (!backslash)
+             goto normal_char;
+-        stray_backslash:
++        stray_backslash: {
+           char const *userevalwarn;
+           userevalwarn = getenv ("DEB_GREP_ENABLE_STRAY_BACKSLASH_WARN");
+           if ((dfa->syntax.dfaopts & DFA_STRAY_BACKSLASH_WARN) &&
+@@ -1566,6 +1566,7 @@
+                 }
+               dfawarn (msg);
+             }
++	}
+           FALLTHROUGH;
+         case ']': case '}':
+         normal_char:
