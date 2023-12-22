@@ -1,4 +1,4 @@
-shadow (1:4.13-99ragnarok01) unstable; urgency=medium
+shadow (1:4.13+dfsg1-99ragnarok01) unstable; urgency=medium
 
   * Initial build of shadow for Ragnarok
   * Differences with Debian's build:
