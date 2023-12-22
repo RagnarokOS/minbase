@@ -19,7 +19,7 @@ LIBS=-Wl,--no-as-needed -ldl -Wl,--as-needed
 CFLAGS = `dpkg-buildflags --get CFLAGS` -flto=thin
 CFLAGS += -O2
 LDFLAGS = `dpkg-buildflags --get LDFLAGS` -flto=thin -Wl,-O2
-LDFLAGS += -Wl,-z,defs
+LDFLAGS += -Xlinker -z -Xlinker defs
 CPPFLAGS += `dpkg-buildflags --get CPPFLAGS`
 DEB_CONFIGURE_SCRIPT_ENV += CFLAGS="$(CFLAGS)"
 DEB_CONFIGURE_SCRIPT_ENV += LDFLAGS="$(LDFLAGS)"

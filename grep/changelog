@@ -1,3 +1,14 @@
+grep (3.8-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of GNU grep for Ragnarok
+  * Differences with Debian's build:
+    - Built with Clang
+    - Adds extra hardening flags
+    - Uses ThinLTO
+    - Includes a small fix for 1019724-handle-backslash-warning.patch
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Fri, 22 Dec 2023 11:12:58 -0500
+
 grep (3.8-5) unstable; urgency=medium
 
   * Upload to unstable
