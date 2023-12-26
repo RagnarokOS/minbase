@@ -1,14 +1,15 @@
 #! /usr/bin/make -f
 
 # Ragnarok: add thinlto
+export CC=clang
 export DEB_CFLAGS_MAINT_APPEND = -flto=thin -fsanitize=cfi -fvisibility=hidden -fno-sanitize-trap=all
-export DEB_LDFLAGS_MAINT_APPEND = -ftlo=thin -Wl,-O2
+export DEB_LDFLAGS_MAINT_APPEND = -flto=thin -Wl,-O2
 
 %:
 	dh $@
 
 override_dh_auto_configure:
-	dh_auto_configure -- CC=clang --exec-prefix=/ --with-packager=Debian --without-included-regex
+	dh_auto_configure -- --exec-prefix=/ --with-packager=Debian --without-included-regex
 
 override_dh_shlibdeps:
 	dh_shlibdeps -- -dPre-Depends
