@@ -1,7 +1,7 @@
 #! /usr/bin/make -f
 
 # Ragnarok: add thinlto
-DEB_CFLAGS_MAINT_APPEND = -flto=thin
+DEB_CFLAGS_MAINT_APPEND = -flto=thin -fsanitize=cfi -fvisibility=hidden -fno-sanitize-trap=all
 DEB_LDFLAGS_MAINT_APPEND = -ftlo=thin -Wl,-O2
 
 %:
