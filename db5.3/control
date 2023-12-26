@@ -1,7 +1,8 @@
 Source: db5.3
 Section: libs
 Priority: optional
-Maintainer: Bastian Germann <bage@debian.org>
+Maintainer: Ian LeCorbeau <I-LeCorbeau@protonmail.com>
+XSBC-Original-Maintainer: Bastian Germann <bage@debian.org>
 Standards-Version: 3.9.6
 # For DEB_STAGE=stage1 build tcl-dev, javahelper, default-jdk can be dropped
 Build-Depends: debhelper (>= 10),
