@@ -1,0 +1,18 @@
+Patch adapted from Gentoo. Credits to Sam James <sam@gentoo.org>.
+
+This patch fixes https://github.com/RagnarokOS/minbase/issues/1
+--- tls.m4.orig	2013-09-09 11:35:02.000000000 -0400
++++ tls.m4	2023-12-27 12:40:47.712000000 -0500
+@@ -42,10 +42,10 @@
+              pthread_key_create(&key, NULL);
+          }
+          static void *get_tls() {
+-             return (void *)pthread_getspecific(&key);
++             return (void *)pthread_getspecific(key);
+          }
+          static void set_tls(void *p) {
+-              pthread_setspecific(&key, p);
++              pthread_setspecific(key, p);
+          }], [],
+          [ac_cv_tls=pthread])
+   fi

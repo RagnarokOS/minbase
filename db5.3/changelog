@@ -1,3 +1,14 @@
+db5.3 (5.3.28+dfsg2-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of Berkeley DB for Ragnarok.
+  * Differences with Debian's build:
+    - Built with clang
+    - Adds extra hardening options (see etc/dpkg/buildflags.conf)
+    - Uses ThinLTO
+    - Adds patch to fix a warning while compiling dist/aclocal/tls.m4
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Wed, 27 Dec 2023 12:43:26 -0500
+
 db5.3 (5.3.28+dfsg2-1) unstable; urgency=medium
 
   * Eliminate a shell script that has a non-free license
