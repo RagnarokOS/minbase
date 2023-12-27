@@ -1,3 +1,13 @@
+sed (4.9-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of sed for Ragnarok
+  * Differences with Debian's build:
+    - built with clang.
+    - adds extra hardening flags (see etc/dpkg/buildflags.conf)
+    - uses Control Flow Integrity and ThinLTO.
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Tue, 26 Dec 2023 12:33:49 -0500
+
 sed (4.9-1) unstable; urgency=medium
 
   * New upstream version.
