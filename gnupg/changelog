@@ -1,3 +1,13 @@
+gnupg2 (2.2.40-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of gnupg2 for Ragnarok.
+  * Differences with Debian's build:
+    - Built with Clang
+    - adds extra hardening options (see etc/dpkg/buildflags.conf)
+    - Uses ThinLTO and Control Flow Integrity
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Thu, 28 Dec 2023 14:26:05 -0500
+
 gnupg2 (2.2.40-1.1) unstable; urgency=medium
 
   * Non-maintainer upload.
