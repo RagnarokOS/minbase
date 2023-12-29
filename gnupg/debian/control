@@ -424,8 +424,6 @@ Description: GNU privacy guard - utility programs
  .
   * addgnupghome -- create .gnupg home directories
   * applygnupgdefaults -- run gpgconf --apply-defaults for all users
-  * gpgcompose -- an experimental tool for constructing arbitrary
-                  sequences of OpenPGP packets (e.g. for testing)
   * gpgparsemail -- parse an e-mail message into annotated format
   * gpgsplit -- split a sequence of OpenPGP packets into files
   * gpgtar -- encrypt or sign files in an archive

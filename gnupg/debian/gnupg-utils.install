@@ -1,4 +1,3 @@
-build-maintainer/g10/gpgcompose usr/bin
 build/tools/gpg-zip usr/bin
 debian/migrate-pubring-from-classic-gpg usr/bin
 debian/tmp/usr/bin/gpgparsemail

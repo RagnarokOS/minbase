@@ -32,8 +32,6 @@ endif
 	dh $@ --with=autoreconf --builddirectory=build
 
 override_dh_auto_configure:
-	dh_auto_configure --builddirectory=build-maintainer -- \
-		--enable-maintainer-mode
 	dh_auto_configure --builddirectory=build -- --libexecdir=\$${prefix}/lib/gnupg \
 		--enable-wks-tools \
 		--enable-all-tests \
