@@ -1,2 +1,4 @@
 RCS/
 gnupg-*
+# don't ignore these files
+!debian/gnupg-*
