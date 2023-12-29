@@ -1,0 +1,5 @@
+po/*.gmo
+po/stamp-po
+doc/gnupg.info
+doc/gnupg.info-1
+doc/gnupg.info-2

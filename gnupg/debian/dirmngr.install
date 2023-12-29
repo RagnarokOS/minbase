@@ -1,0 +1,4 @@
+debian/tmp/usr/bin/dirmngr
+debian/tmp/usr/bin/dirmngr-client
+debian/tmp/usr/lib/gnupg/dirmngr_ldap
+debian/tmp/usr/share/gnupg/sks-keyservers.netCA.pem

@@ -33,15 +33,6 @@ Build-Depends:
  texinfo,
  transfig,
  zlib1g-dev | libz-dev,
-Build-Depends-Indep:
- binutils-multiarch [!amd64 !i386],
- libassuan-mingw-w64-dev (>= 2.5.0),
- libgcrypt-mingw-w64-dev (>= 1.8.0),
- libgpg-error-mingw-w64-dev (>= 1.45),
- libksba-mingw-w64-dev (>= 1.3.5),
- libnpth-mingw-w64-dev (>= 1.2),
- libz-mingw-w64-dev,
- mingw-w64,
 Vcs-Git: https://salsa.debian.org/debian/gnupg2.git -b debian/main
 Vcs-Browser: https://salsa.debian.org/debian/gnupg2
 Homepage: https://www.gnupg.org/
@@ -95,7 +86,7 @@ Recommends:
  ${shlibs:Recommends},
 Suggests:
  dbus-user-session,
- libpam-systemd,
+ libpam-elogind | libpam-systemd,
  pinentry-gnome3,
  scdaemon,
 Replaces:
@@ -367,7 +358,7 @@ Replaces:
  gnupg2 (<< 2.1.10-2),
 Suggests:
  dbus-user-session,
- libpam-systemd,
+ libpam-elogind | libpam-systemd,
  pinentry-gnome3,
  tor,
 Description: GNU privacy guard - network certificate management service
@@ -382,64 +373,6 @@ Description: GNU privacy guard - network certificate management service
  dirmngr is used for network access by gpg, gpgsm, and dirmngr-client,
  among other tools.  Unless this package is installed, the parts of
  the GnuPG suite that try to interact with the network will fail.
-
-Package: gpgv-udeb
-Package-Type: udeb
-Section: debian-installer
-Architecture: any
-Depends:
- ${misc:Depends},
- ${shlibs:Depends},
-Description: minimal signature verification tool
- GnuPG is GNU's tool for secure communication and data storage.
- It can be used to encrypt data and to create digital signatures.
- It includes an advanced key management facility and is compliant
- with the proposed OpenPGP Internet standard as described in RFC 4880.
- .
- This is GnuPG's signature verification tool, gpgv, packaged in minimal
- form for use in debian-installer.
-
-Package: gpgv-static
-Architecture: any
-Multi-Arch: foreign
-Depends:
- ${misc:Depends},
- ${shlibs:Depends},
-Recommends:
- debian-archive-keyring,
- debootstrap,
-Description: minimal signature verification tool (static build)
- GnuPG is GNU's tool for secure communication and data storage.
- It can be used to encrypt data and to create digital signatures.
- It includes an advanced key management facility and is compliant
- with the proposed OpenPGP Internet standard as described in RFC 4880.
- .
- This is GnuPG's signature verification tool, gpgv, built statically
- so that it can be directly used on any platform that is running on
- the Linux kernel.  Android and ChromeOS are two well known examples,
- but there are many other platforms that this will work for, like
- embedded Linux OSes.  This gpgv in combination with debootstrap and
- the Debian archive keyring allows the secure creation of chroot
- installs on these platforms by using the full Debian signature
- verification that is present in all official Debian mirrors.
-
-Package: gpgv-win32
-Architecture: all
-Multi-Arch: foreign
-Depends:
- ${misc:Depends},
-Suggests:
- wine,
-Description: GNU privacy guard - signature verification tool (win32 build)
- GnuPG is GNU's tool for secure communication and data storage.
- .
- gpgv is a stripped-down version of gnupg which is only able to check
- signatures.  It is smaller than the full-blown gnupg and uses a
- different (and simpler) way to check that the public keys used to
- make the signature are trustworthy.
- .
- This is a win32 version of gpgv.  It's meant to be used by the win32-loader
- component of Debian-Installer.
 
 Package: gnupg-l10n
 Section: localization
