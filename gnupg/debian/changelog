@@ -6,7 +6,7 @@ gnupg2 (2.2.40-99ragnarok01) unstable; urgency=medium
     - adds extra hardening options (see etc/dpkg/buildflags.conf)
     - Uses ThinLTO and Control Flow Integrity
 
- -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Thu, 28 Dec 2023 14:26:05 -0500
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Fri, 29 Dec 2023 14:15:29 -0500
 
 gnupg2 (2.2.40-1.1) unstable; urgency=medium
 

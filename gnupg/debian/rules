@@ -44,11 +44,6 @@ override_dh_auto_build-arch:
 override_dh_auto_test:
 	dh_auto_test --builddirectory=build -- verbose=3 TESTFLAGS=$(AUTOTEST_FLAGS)
 
-override_dh_shlibdeps:
-# Make ldap a recommends rather than a hard dependency.
-	dpkg-shlibdeps -Tdebian/dirmngr.substvars -dRecommends debian/dirmngr/usr/lib/gnupg/dirmngr_ldap -dDepends debian/dirmngr/usr/bin/dirmngr*
-	dh_shlibdeps -Ndirmngr
-
 # visualizations of package dependencies:
 debian/%.png: debian/%.dot
 	dot -T png -o $@ $<
