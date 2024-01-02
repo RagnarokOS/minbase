@@ -1,0 +1,12 @@
+# this is an ongoing discussion with upstream, with little likely to change any time soon:
+# see: https://bugs.debian.org/643341
+# and: https://lists.gnupg.org/pipermail/gnupg-devel/2014-May/028473.html
+libgpg-error-dev: old-style-config-script [usr/bin/gpgrt-config]
+
+# upstream only ships gpgrt-config for use with gpg-error.m4 see
+# upstream commits 1e7d0d3ef627f3cdee70b8409f04d7e2ecf4fdd6 and
+# b5043421d2b3ff5999e88808737ff400bf15b0ee which indicate that
+# gpgrt-config is considered an "internal command", and the manpage
+# should relate only to the legacy/deprecated gpg-error-config, which
+# we are not shipping.
+libgpg-error-dev: no-manual-page [usr/bin/gpgrt-config]

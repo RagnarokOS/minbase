@@ -1,0 +1,41 @@
+#!/usr/bin/make -f
+include /usr/share/dpkg/architecture.mk
+export AUTOPOINT = true
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export CFLAGS_FOR_BUILD = $(shell dpkg-architecture -f -a$(DEB_BUILD_ARCH) -c dpkg-buildflags --get CFLAGS)
+export LDFLAGS_FOR_BUILD = $(shell dpkg-architecture -f -a$(DEB_BUILD_ARCH) -c dpkg-buildflags --get LDFLAGS)
+
+# Ragnarok: set CC as clang and add ThinLTO.
+export CC=clang
+# ThinLTO causes some errors. Package still builds but let's wait before enabling it.
+#export DEB_CFLAGS_MAINT_APPEND = -flto=thin
+#export DEB_LDFLAGS_MAINT_APPEND = -flto=thin -Wl,-O2
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+	touch po/libgpg-error.pot
+	dh_auto_configure --builddirectory=build -- \
+	    --enable-static \
+	    --disable-rpath \
+	    --infodir=\$${prefix}/share/info \
+	    --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)
+
+override_dh_auto_build-arch:
+	dh_auto_build --builddirectory=build
+ifeq ($(DEB_HOST_MULTIARCH),$(DEB_BUILD_MULTIARCH))
+	tail -vn+0 build/src/lock-obj-pub.native.h
+endif
+
+override_dh_auto_install-arch:
+	dh_auto_install --builddirectory=build
+
+override_dh_installchangelogs:
+	dh_installchangelogs -A NEWS
+
+override_dh_installdocs:
+	dh_installdocs -A README
+
+override_dh_link:
+	dh_link -plibgpg-error-dev lib/$(DEB_HOST_MULTIARCH)/libgpg-error.so.0 usr/lib/$(DEB_HOST_MULTIARCH)/libgpg-error.so
