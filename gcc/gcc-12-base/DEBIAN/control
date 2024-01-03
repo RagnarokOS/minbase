@@ -1,8 +1,9 @@
 Package: gcc-12-base
 Source: gcc-12
-Version: 12.2.0-14
+Version: 12.2.0-99ragnarok01
 Architecture: amd64
-Maintainer: Debian GCC Maintainers <debian-gcc@lists.debian.org>
+Maintainer: Ian LeCorbeau <I-LeCorbeau@protonmail.com>
+XSBC-Original-Maintainer: Debian GCC Maintainers <debian-gcc@lists.debian.org>
 Installed-Size: 100
 Breaks: gnat (<< 7)
 Section: libs
