@@ -5,7 +5,7 @@ libgpg-error (1.46-99ragnarok01) unstable; urgency=medium
     - Built with Clang
     - Adds extra hardening options (see etc/dpkg/buildflags.conf)
 
- -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Tue, 02 Jan 2024 10:31:52 -0500
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Tue, 03 Jan 2024 14:11:13 -0500
 
 libgpg-error (1.46-1) unstable; urgency=medium
 

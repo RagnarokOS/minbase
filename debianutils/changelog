@@ -1,3 +1,13 @@
+debianutils (5.7-0.5~deb12u1.99ragnarok01) unstable; urgency=medium
+
+  * Initial build of debianutils for Ragnarok
+  * Differences with Debian's build:
+    - Built with clang.
+    - Adds extra hardening flags (see etc/dpkg/buildflags.conf)
+    - Uses ThinLTO and Control Flow Integrity
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Wed, 03 Jan 2024 14:18:24 -0500
+
 debianutils (5.7-0.5~deb12u1) bookworm; urgency=medium
 
   * Rebuild for bookworm.
