@@ -1,0 +1,13 @@
+Using 'test -z ...' without wrapping it around '$(shell ...)"
+causes distclean to fail.
+--- Makefile.orig	2022-07-17 19:33:06.000000000 -0400
++++ Makefile	2024-01-06 13:16:29.211865863 -0500
+@@ -41,7 +41,7 @@
+ 	$(BUILD_FGREP) "#define LIBCAP_MAJOR $(VERSION)" libcap/include/sys/capability.h
+ 	$(BUILD_FGREP) "#define LIBCAP_MINOR $(MINOR)" libcap/include/sys/capability.h
+ 	@echo "Now validate that everything is checked in to a clean tree.."
+-	test -z "$$(git status --ignored -s)"
++	$(shell test -z "$(git status --ignored -s)")
+ 	@echo "All good!"
+ 
+ release: distclean
