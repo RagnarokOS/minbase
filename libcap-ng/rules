@@ -1,0 +1,66 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# debian/rules file for libcap-ng
+# Written by Pierre Chifflier <pollux@debian.org>
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# Ragnarok: use clang
+export CC=clang
+
+ifneq ($(filter nopython,$(DEB_BUILD_PROFILES)),)
+PY3VERS = dummy
+CONFIGURE_FLAGS = --without-python --without-python3
+else
+PY3VERS = $(shell py3versions --supported --version)
+CONFIGURE_FLAGS = --with-python3 PYTHON=/usr/bin/python$$V
+endif
+
+override_dh_auto_configure:
+	for V in $(PY3VERS); do \
+		dh_auto_configure --builddir=build-py$$V -- \
+			$(CONFIGURE_FLAGS); \
+	done
+
+override_dh_auto_build:
+	for V in $(PY3VERS); do \
+		dh_auto_build --builddir=build-py$$V; \
+	done
+
+override_dh_auto_install:
+	for V in $(PY3VERS); do \
+		dh_auto_install --builddir=build-py$$V; \
+	done
+
+	find $(CURDIR)/debian/tmp -name *.la -delete
+	mkdir -p $(CURDIR)/debian/tmp/lib/$(DEB_HOST_MULTIARCH) && \
+	mv $(CURDIR)/debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/lib*.so.0* $(CURDIR)/debian/tmp/lib/$(DEB_HOST_MULTIARCH)/; \
+	rm debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libcap-ng.so; \
+	ln -s ../../../lib/$(DEB_HOST_MULTIARCH)/libcap-ng.so.0.0.0 debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libcap-ng.so; \
+	rm debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libdrop_ambient.so; \
+	ln -s ../../../lib/$(DEB_HOST_MULTIARCH)/libdrop_ambient.so.0.0.0 debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libdrop_ambient.so; \
+
+override_dh_auto_test:
+	for V in $(PY3VERS); do \
+		dh_auto_test --builddir=build-py$$V; \
+	done
+
+ifeq ($(filter nopython,$(DEB_BUILD_PROFILES)),)
+execute_after_dh_python3:
+	rm -rf debian/python3-cap-ng/usr/lib/python3.*
+endif
+
+override_dh_auto_clean:
+	for V in $(PY3VERS); do \
+		dh_auto_clean --builddir=build-py$$V; \
+	done
+
+%:
+ifeq ($(filter nopython,$(DEB_BUILD_PROFILES)),)
+	dh $@ --with=python3,autoreconf
+else
+	dh $@ --with=autoreconf
+endif
