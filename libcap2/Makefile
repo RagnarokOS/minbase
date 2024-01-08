@@ -1,5 +1,5 @@
 # Global Makefile for libcap2
-# $Ragnarok: Makefile,v 1.1 2024/01/07 16:58:25 lecorbeau Exp $
+# $Ragnarok: Makefile,v 1.2 2024/01/08 19:06:45 lecorbeau Exp $
 
 PKG	= libcap2
 VERSION	= 2.66
@@ -7,7 +7,7 @@ VERSION	= 2.66
 DEBIAN	= changelog control
 
 # Building a deb package
-deb:
+deb: src
 	cp ${DEBIAN} ${PKG}-${VERSION}/debian/
 	patch -d ${PKG}-${VERSION} < patches/fix-distclean-test.diff
 	cd ${PKG}-${VERSION}; \

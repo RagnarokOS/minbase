@@ -1,5 +1,5 @@
 # Global Makefile for bzip2
-# $Ragnarok: Makefile,v 1.1 2024/01/07 16:56:18 lecorbeau Exp $
+# $Ragnarok: Makefile,v 1.2 2024/01/08 19:06:05 lecorbeau Exp $
 
 PKG	= bzip2
 VERSION	= 1.0.8
@@ -7,7 +7,7 @@ VERSION	= 1.0.8
 DEBIAN	= changelog control rules
 
 # Building a deb package
-deb:
+deb: src
 	cp ${DEBIAN} ${PKG}-${VERSION}/debian/
 	cd ${PKG}-${VERSION}; \
 		dch -n -p; \
