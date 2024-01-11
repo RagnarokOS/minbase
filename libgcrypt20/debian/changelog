@@ -1,3 +1,12 @@
+libgcrypt20 (1.10.1-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of libgcrypt20 for Ragnarok.
+  * Differences with Debian's build:
+    - Built with Clang.
+    - Adds extra hardening options (see etc/dpkg/buildflags.conf)
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Thu, 11 Jan 2024 12:39:17 -0500
+
 libgcrypt20 (1.10.1-3) unstable; urgency=medium
 
   * 32-build-Prefer-gpgrt-config-when-available.patch from
