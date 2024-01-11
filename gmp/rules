@@ -62,12 +62,13 @@ endif
 
 confflags_ma = $(confflags) $(confflags_build) --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
 
-#CC   = $(DEB_HOST_GNU_TYPE)-gcc
-#CXX   = $(DEB_HOST_GNU_TYPE)-g++
+CC   = $(DEB_HOST_GNU_TYPE)-gcc
+CXX   = $(DEB_HOST_GNU_TYPE)-g++
 
 # Ragnarok: CC is clang, CXX is clang++
-CC	= clang
-CXX	= clang++
+# NOTE: Package won't build with clang. Need to investigate.
+#CC	= clang
+#CXX	= clang++
 
 
 configure: configure-stamp
