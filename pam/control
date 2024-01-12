@@ -1,8 +1,9 @@
 Source: pam
 Section: libs
 Priority: optional
-Maintainer: Sam Hartman <hartmans@debian.org>
-Uploaders: Steve Langasek <vorlon@debian.org>
+Maintainer: Ian LeCorbeau <I-LeCorbeau@protonmail.com>
+XSBC-Original-Maintainer: Sam Hartman <hartmans@debian.org>
+XSBC-Original-Uploaders: Steve Langasek <vorlon@debian.org>
 Standards-Version: 4.6.0
 Build-Depends: debhelper-compat (= 13), dh-exec, quilt, flex, libdb-dev, libcrypt-dev, libselinux1-dev [linux-any], po-debconf, dh-autoreconf, autopoint, libaudit-dev [linux-any] <!stage1>, pkg-config, libfl-dev, libfl-dev:native, docbook-xsl, docbook-xml, xsltproc, libxml2-utils, w3m
 Build-Conflicts-Indep: fop
