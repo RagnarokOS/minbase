@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 DEB_LDFLAGS_MAINT_APPEND := -Xlinker -z -Xlinker defs -flto=thin -Wl,-O2
-DEB_CFLAGS_MAINT_APPEND  := $(shell getconf LFS_CFLAGS) -flto=thin -fsanitize=cfi -fno-sanitize-trap=all -fvisibility=hidden
+DEB_CFLAGS_MAINT_APPEND  := $(shell getconf LFS_CFLAGS) -flto=thin
 DEB_BUILD_MAINT_OPTIONS  := hardening=+bindnow
 export DEB_LDFLAGS_MAINT_APPEND DEB_CFLAGS_MAINT_APPEND DEB_BUILD_MAINT_OPTIONS
 ifeq ($(shell dpkg-architecture -qDEB_BUILD_ARCH_OS),hurd)

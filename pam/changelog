@@ -1,3 +1,13 @@
+pam (1.5.2-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of pam for Ragnarok.
+  * Differences with Debian's build:
+    - Built with Clang.
+    - Adds extra hardening flags (see etc/dpkg/buildflags.conf).
+    - Enables ThinLTO and CFI.
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Tue, 16 Jan 2024 11:41:39 -0500
+
 pam (1.5.2-6+deb12u1) bookworm; urgency=medium
 
   * Fix pam-auth-update --disable logic error, Closes: #1039873
