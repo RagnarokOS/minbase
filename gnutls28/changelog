@@ -1,3 +1,12 @@
+gnutls28 (3.7.9-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of gnutls28 for Ragnarok.
+  * Differences with Debian's build:
+    - Built with Clang.
+    - Adds extra hardening flags (see etc/dpkg/buildflags.conf).
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Tue, 16 Jan 2024 12:23:03 -0500
+
 gnutls28 (3.7.9-2+deb12u1) bookworm; urgency=medium
 
   * Backport fix for CVE-2023-5981 / GNUTLS-SA-2023-10-23 (timing sidechannel
