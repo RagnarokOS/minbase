@@ -1,10 +1,10 @@
 # Global Makefile for xz-utils
-# $Ragnarok: Makefile,v 1.1 2024/01/12 19:14:16 lecorbeau Exp $
+# $Ragnarok: Makefile,v 1.2 2024/01/17 19:39:43 lecorbeau Exp $
 
 PKG	= xz-utils
 VERSION	= 5.4.1
 
-DEBIAN	= changelog control rules
+DEBIAN	= changelog control rules symbols
 
 # Building a deb package
 deb: src
