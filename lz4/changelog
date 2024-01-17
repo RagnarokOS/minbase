@@ -1,3 +1,12 @@
+lz4 (1.9.4-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of lz4 for Ragnarok.
+  * Differences with Debian's build:
+    - Built with Clang.
+    - Adds extra hardening flags (see etc/dpkg/buildflags.conf).
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Wed, 17 Jan 2024 13:36:20 -0500
+
 lz4 (1.9.4-1) unstable; urgency=medium
 
   * New upstream release.
