@@ -1,9 +1,9 @@
 #!/usr/bin/make -f
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
-# Ragnarok: CC is clang, and try LTO + CFI.
+# Ragnarok: CC is clang, and enable LTO.
 export CC=clang
-export DEB_CFLAGS_MAINT_APPEND = -flto=thin -fsanitize=cfi -fno-sanitize-trap=all -fvisibility=hidden
+export DEB_CFLAGS_MAINT_APPEND = -flto=thin
 export DEB_LDFLAGS_MAINT_APPEND = -flto=thin -Wl,-O2
 
 %:

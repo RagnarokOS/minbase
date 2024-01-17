@@ -1,3 +1,13 @@
+xz-utils (5.4.1-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of xz-utils for Ragnarok.
+  * Differences with Debian's build:
+    - Built with Clang.
+    - Adds extra hardening flags (see etc/dpkg/buildflags.conf).
+    - Enables ThinLTO.
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Wed, 17 Jan 2024 14:19:30 -0500
+
 xz-utils (5.4.1-0.2) unstable; urgency=medium
 
   * Non-maintainer upload.
