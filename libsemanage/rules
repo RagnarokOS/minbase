@@ -1,0 +1,89 @@
+#!/usr/bin/make -f
+#export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# Ragnarok: CC is Clang
+export CC=clang
+
+include /usr/share/dpkg/architecture.mk
+# for cross compilation
+ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
+export CC := $(DEB_HOST_GNU_TYPE)-gcc
+export PKG_CONFIG := $(DEB_HOST_GNU_TYPE)-pkg-config
+endif
+
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+    NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+    MAKEFLAGS += -j$(NUMJOBS)
+endif
+
+DOPACKAGES = $(shell dh_listpackages)
+
+DH_ADDONS=
+ifneq ($(filter python3-semanage,$(DOPACKAGES)),)
+PY3VERSIONS = $(shell py3versions -rv)
+DH_ADDONS += --with=python3
+endif
+ifneq ($(filter ruby-semanage,$(DOPACKAGES)),)
+RUBY_VERSIONS := $(shell dh_ruby --print-supported)
+DH_ADDONS += --with=ruby
+endif
+
+# Upstream recommends using this flag
+export DEB_CFLAGS_MAINT_APPEND = -fno-semantic-interposition
+# The build system doesn't use CPPFLAGS, pass them to CFLAGS to enable the
+# missing (hardening) flags. Also enable Wall and Wextra to spot basic irregularities.
+export DEB_CFLAGS_MAINT_APPEND += $(shell dpkg-buildflags --get CPPFLAGS) -Wall -Wextra
+
+%:
+	dh $@ $(DH_ADDONS)
+
+override_dh_auto_build:
+	$(MAKE) all
+
+ifneq ($(filter python3-semanage,$(DOPACKAGES)),)
+	set -e; for version in $(PY3VERSIONS); do        \
+	  $(MAKE) pywrap PYTHON=python$$version PYLIBS=; \
+	done;
+endif
+ifneq ($(filter ruby-semanage,$(DOPACKAGES)),)
+	set -e; for version in $(RUBY_VERSIONS); do      \
+	  $(MAKE) -C src rubywrap RUBY=$$version; \
+	done;
+endif
+
+override_dh_auto_install:
+	$(MAKE) install DESTDIR="${CURDIR}/debian/tmp" \
+	  LIBDIR="/usr/lib/${DEB_HOST_MULTIARCH}" \
+	  SHLIBDIR="/usr/lib/${DEB_HOST_MULTIARCH}"
+
+ifneq ($(filter python3-semanage,$(DOPACKAGES)),)
+	set -e; for version in $(PY3VERSIONS); do        \
+	  $(MAKE) install-pywrap PYTHON=python$$version DESTDIR="${CURDIR}/debian/tmp"; \
+	done;
+endif
+ifneq ($(filter ruby-semanage,$(DOPACKAGES)),)
+	set -e; for version in $(RUBY_VERSIONS); do      \
+	  $(MAKE) -C src install-rubywrap RUBY=$$version DESTDIR="${CURDIR}/debian/tmp"; \
+	done;
+endif
+
+override_dh_auto_clean:
+	dh_auto_clean
+ifneq ($(filter python3-semanage,$(DOPACKAGES)),)
+	set -e; for version in $(PY3VERSIONS); do         \
+	  $(MAKE) clean PYTHON=python$$version;  \
+	done;
+endif
+ifneq ($(filter ruby-semanage,$(DOPACKAGES)),)
+	set -e; for version in $(RUBY_VERSIONS); do      \
+	  $(MAKE) clean RUBY=$$version; \
+	done;
+endif
+
+override_dh_fixperms:
+	dh_fixperms
+ifneq ($(filter python3-semanage,$(DOPACKAGES)),)
+	chmod -x ${CURDIR}/debian/python3-semanage/usr/lib/python*/*-packages/semanage.py
+endif

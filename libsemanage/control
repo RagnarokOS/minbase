@@ -1,0 +1,165 @@
+Source: libsemanage
+Vcs-Git: https://salsa.debian.org/selinux-team/libsemanage.git
+Vcs-Browser: https://salsa.debian.org/selinux-team/libsemanage
+Priority: optional
+Section: libdevel
+Maintainer: Ian LeCorbeau <I-LeCorbeau@protonmail.com>
+XSBC-Original-Maintainer: Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>
+XSBC-Original-Uploaders: Laurent Bigonville <bigon@debian.org>,
+           Russell Coker <russell@coker.com.au>
+Standards-Version: 4.6.0
+Build-Depends: yacc | bison,
+               debhelper-compat (= 13),
+               dh-python <!nopython>,
+               file,
+               flex,
+               gem2deb (>= 0.5.0~) <!noruby>,
+               libaudit-dev,
+               libbz2-dev,
+               libcunit1-dev <!nocheck>,
+               libselinux1-dev (>= 3.4),
+               libsepol-dev (>= 3.4),
+               pkg-config,
+               python3-all-dev <!nopython>,
+               secilc (>= 3.4) <!nocheck>,
+               swig <!nopython> <!noruby>
+Homepage: https://selinuxproject.org
+XS-Ruby-Versions: all
+Rules-Requires-Root: no
+
+Package: libsemanage-common
+Architecture: all
+Section: libs
+Depends: ${misc:Depends}
+Multi-Arch: foreign
+Description: Common files for SELinux policy management libraries
+ This package provides the common files used by the shared libraries
+ for SELinux policy management.
+ .
+ Security-enhanced Linux is a patch of the Linux kernel and a
+ number of utilities with enhanced security functionality designed to
+ add mandatory access controls to Linux.  The Security-enhanced Linux
+ kernel contains new architectural components originally developed to
+ improve the security of the Flask operating system. These
+ architectural components provide general support for the enforcement
+ of many kinds of mandatory access control policies, including those
+ based on the concepts of Type Enforcement, Role-based Access
+ Control, and Multi-level Security.
+
+Package: libsemanage2
+Architecture: linux-any
+Section: libs
+Depends: libsemanage-common (>= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Breaks: policycoreutils (<< 3.0),
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
+Description: SELinux policy management library
+ This package provides the shared libraries for SELinux policy management.
+ It uses libsepol for binary policy manipulation and libselinux for
+ interacting with the SELinux system.  It also exec's helper programs
+ for loading policy and for checking whether the file_contexts
+ configuration is valid (load_policy and setfiles from
+ policycoreutils) presently, although this may change at least for the
+ bootstrapping case
+ .
+ Security-enhanced Linux is a patch of the Linux kernel and a
+ number of utilities with enhanced security functionality designed to
+ add mandatory access controls to Linux.  The Security-enhanced Linux
+ kernel contains new architectural components originally developed to
+ improve the security of the Flask operating system. These
+ architectural components provide general support for the enforcement
+ of many kinds of mandatory access control policies, including those
+ based on the concepts of Type Enforcement, Role-based Access
+ Control, and Multi-level Security.
+
+Package: libsemanage-dev
+Architecture: linux-any
+Depends: libbz2-dev,
+         libselinux1-dev (>= 3.4),
+         libsemanage2 (= ${binary:Version}),
+         libsepol-dev (>= 3.4),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Breaks: libsemanage1-dev (<< 3.2)
+Replaces: libsemanage1-dev (<< 3.2)
+Multi-Arch: same
+Description: Header files and libraries for SELinux policy manipulation
+ This package provides an API for the management of SELinux policies.
+ It contains the static libraries and header files needed
+ for developing applications that manage SELinux policies.
+ .
+ Security-enhanced Linux is a patch of the Linux kernel and a
+ number of utilities with enhanced security functionality designed to
+ add mandatory access controls to Linux.  The Security-enhanced Linux
+ kernel contains new architectural components originally developed to
+ improve the security of the Flask operating system. These
+ architectural components provide general support for the enforcement
+ of many kinds of mandatory access control policies, including those
+ based on the concepts of Type Enforcement, Role-based Access
+ Control, and Multi-level Security.
+
+Package: ruby-semanage
+Architecture: linux-any
+Depends: ruby | ruby-interpreter, ${misc:Depends}, ${shlibs:Depends}
+Section: ruby
+Build-Profiles: <!noruby>
+XB-Ruby-Versions: ${ruby:Versions}
+Multi-Arch: same
+Description: Ruby bindings to for SELinux policy management
+ This package provides the Ruby bindings needed for developing Ruby
+ applications that manage SELinux policies.
+ .
+ Security-enhanced Linux is a patch of the Linux kernel and a
+ number of utilities with enhanced security functionality designed to
+ add mandatory access controls to Linux.  The Security-enhanced Linux
+ kernel contains new architectural components originally developed to
+ improve the security of the Flask operating system. These
+ architectural components provide general support for the enforcement
+ of many kinds of mandatory access control policies, including those
+ based on the concepts of Type Enforcement, Role-based Access
+ Control, and Multi-level Security.
+
+Package: python3-semanage
+Architecture: linux-any
+Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
+Section: python
+Build-Profiles: <!nopython>
+Description: Python3 bindings for SELinux policy management
+ This package provides Python3 bindings for the management of SELinux
+ policies.
+ .
+ Security-enhanced Linux is a patch of the Linux kernel and a
+ number of utilities with enhanced security functionality designed to
+ add mandatory access controls to Linux.  The Security-enhanced Linux
+ kernel contains new architectural components originally developed to
+ improve the security of the Flask operating system. These
+ architectural components provide general support for the enforcement
+ of many kinds of mandatory access control policies, including those
+ based on the concepts of Type Enforcement, Role-based Access
+ Control, and Multi-level Security.
+
+Package: semanage-utils
+Architecture: all
+Depends: libsepol2 (>= 3.4),
+         python3 (>= 3.2),
+         python3-selinux (>= 3.4),
+         python3-semanage (>= 3.4),
+         ${misc:Depends},
+         ${python3:Depends}
+Section: admin
+Description: SELinux policy management utilities
+ This package contains an utility that can be used to migrate from the old
+ policy store format (HLL, stored in /etc/selinux) to the new one (CLI, stored
+ in /var/lib/selinux).
+ .
+ Security-enhanced Linux is a patch of the Linux kernel and a
+ number of utilities with enhanced security functionality designed to
+ add mandatory access controls to Linux.  The Security-enhanced Linux
+ kernel contains new architectural components originally developed to
+ improve the security of the Flask operating system. These
+ architectural components provide general support for the enforcement
+ of many kinds of mandatory access control policies, including those
+ based on the concepts of Type Enforcement, Role-based Access
+ Control, and Multi-level Security.
