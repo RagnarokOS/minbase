@@ -1,0 +1,40 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# Ragnarok: CC is clang.
+export CC=clang
+
+# Enable verbose build details.
+export V=1
+
+include /usr/share/dpkg/architecture.mk
+
+%:
+ifeq ($(filter nopython,$(DEB_BUILD_PROFILES)),)
+	dh $@ --with python3
+else
+	dh $@
+endif
+
+ifeq ($(filter nopython,$(DEB_BUILD_PROFILES)),)
+
+override_dh_auto_install:
+	dh_auto_install
+	for pyver in `py3versions -s`; do \
+		set -e; \
+		if python3 -c "pyver=tuple(map(int, '$$pyver'[6:].split('.'))); exit(0 if pyver >= (3,8) else 1)"; then \
+			export _PYTHON_SYSCONFIGDATA_NAME='_sysconfigdata__${DEB_HOST_ARCH_OS}_${DEB_HOST_MULTIARCH}'; \
+		else \
+			export _PYTHON_SYSCONFIGDATA_NAME='_sysconfigdata_m_${DEB_HOST_ARCH_OS}_${DEB_HOST_MULTIARCH}'; \
+		fi; \
+		dh_auto_configure -- --enable-python PYTHON=$$pyver; \
+		dh_auto_install --sourcedirectory=src/python -- PYTHON=$$pyver; \
+	done
+endif
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f regression.out
