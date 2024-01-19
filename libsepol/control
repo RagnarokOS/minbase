@@ -1,0 +1,62 @@
+Source: libsepol
+Vcs-Git: https://salsa.debian.org/selinux-team/libsepol.git
+Vcs-Browser: https://salsa.debian.org/selinux-team/libsepol
+Priority: optional
+Section: libs
+Maintainer: Ian LeCorbeau <I-LeCorbeau@protonmail.com>
+XSBC-Original-Maintainer: Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>
+XSBC-Original-Uploaders: Laurent Bigonville <bigon@debian.org>, Russell Coker <russell@coker.com.au>
+Standards-Version: 4.6.0
+Build-Depends: debhelper-compat (= 13), file, flex
+Homepage: https://selinuxproject.org
+Rules-Requires-Root: no
+
+Package: sepol-utils
+Section: admin
+Architecture: linux-any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Security Enhanced Linux policy utility programs
+ This package provides a utility for a Security-enhanced
+ Linux system to rewrite existing mandatory access control policy with
+ different boolean setting, generating a new policy. Security-enhanced
+ Linux is a patch of the Linux kernel and a number of utilities with
+ enhanced security functionality designed to add mandatory access
+ controls to Linux. This package provides utility programs to get and
+ set process and file security contexts and to obtain security policy
+ decisions.
+
+Package: libsepol2
+Architecture: linux-any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
+Description: SELinux library for manipulating binary security policies
+ Security-enhanced Linux is a patch of the Linux kernel and a number
+ of utilities with enhanced security functionality designed to add
+ mandatory access controls to Linux.  The Security-enhanced Linux
+ kernel contains new architectural components originally developed to
+ improve the security of the Flask operating system. These
+ architectural components provide general support for the enforcement
+ of many kinds of mandatory access control policies, including those
+ based on the concepts of Type Enforcement®, Role-based Access
+ Control, and Multi-level Security.
+ .
+ libsepol provides an API for the manipulation of SELinux binary policies.
+ It is used by checkpolicy (the policy compiler) and similar tools, as well
+ as by programs like load_policy that need to perform specific transformations
+ on binary policies such as customizing policy boolean settings.
+
+Package: libsepol-dev
+Section: libdevel
+Architecture: linux-any
+Depends: libsepol2 (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Breaks: libsepol1-dev (<< 3.2)
+Replaces: libsepol1-dev (<< 3.2)
+Multi-Arch: same
+Description: SELinux binary policy manipulation library and development files
+ libsepol allows programs to easily modify SELinux binary policies.  This
+ means changing the default values for booleans, or reading the policy for
+ analysis.
+ .
+ This package contains the headers and archives used for linking it into your
+ programs.

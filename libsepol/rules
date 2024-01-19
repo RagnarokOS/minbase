@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# Ragnarok: CC is clang
+export CC=clang
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+export LIBDIR=/usr/lib/${DEB_HOST_MULTIARCH}
+export SHLIBDIR=/lib/${DEB_HOST_MULTIARCH}
+
+# Upstream recommends using this flag
+export DEB_CFLAGS_MAINT_APPEND = -fno-semantic-interposition
+# The build system doesn't use CPPFLAGS, pass them to CFLAGS to enable the
+# missing (hardening) flags. Also enable Wall and Wextra to spot basic irregularities.
+export DEB_CFLAGS_MAINT_APPEND += $(shell dpkg-buildflags --get CPPFLAGS) -Wall -Wextra
+
+%:
+	dh $@
+
+override_dh_auto_test:
