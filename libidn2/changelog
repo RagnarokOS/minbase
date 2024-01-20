@@ -1,3 +1,12 @@
+libidn2 (2.3.3-99ragnarok01) unstable; urgency=medium
+
+  * Initial build of libidn2 for Ragnarok.
+  * Differences with Debian's build:
+    - Built with clang.
+    - adds extra hardening flags (see etc/dpkg/buildflags.conf)
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Sat, 20 Jan 2024 10:56:14 -0500
+
 libidn2 (2.3.3-1) unstable; urgency=medium
 
   [ Debian Janitor ]

@@ -1,7 +1,8 @@
 Source: libidn2
 Section: libs
-Maintainer: Debian Libidn team <help-libidn@gnu.org>
-Uploaders: Simon Josefsson <simon@josefsson.org>,
+Maintainer: Ian LeCorbeau <I-LeCorbeau@protonmail.com>
+XSBC-Original-Maintainer: Debian Libidn team <help-libidn@gnu.org>
+XSBC-Original-Uploaders: Simon Josefsson <simon@josefsson.org>,
            Ondřej Surý <ondrej@debian.org>
 Build-Depends: debhelper-compat (= 13),
                gengetopt,
