@@ -1,10 +1,10 @@
 # Global Makefile for libmd
-# $Ragnarok: Makefile,v 1.1 2024/01/18 17:36:14 lecorbeau Exp $
+# $Ragnarok: Makefile,v 1.2 2024/01/20 17:36:53 lecorbeau Exp $
 
 PKG	= libmd
 VERSION	= 1.0.4
 
-DEBIAN	= changelog control rules
+DEBIAN	= changelog control rules libmd0.symbols
 
 # Building a deb package
 deb: src
