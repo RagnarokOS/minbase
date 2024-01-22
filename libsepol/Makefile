@@ -1,10 +1,10 @@
 # Global Makefile for libsepol
-# $Ragnarok: Makefile,v 1.1 2024/01/19 18:37:02 lecorbeau Exp $
+# $Ragnarok: Makefile,v 1.2 2024/01/22 17:30:12 lecorbeau Exp $
 
 PKG	= libsepol
 VERSION	= 3.4
 
-DEBIAN	= changelog control rules
+DEBIAN	= changelog control rules libsepol2.symbols
 
 # Building a deb package
 deb: src
