@@ -8,7 +8,7 @@ XSBC-Original-Maintainer: Debian SELinux maintainers <selinux-devel@lists.alioth
 XSBC-Original-Uploaders: Laurent Bigonville <bigon@debian.org>,
            Russell Coker <russell@coker.com.au>
 Standards-Version: 4.6.0
-Build-Depends: yacc | bison,
+Build-Depends: bison,
                debhelper-compat (= 13),
                dh-python <!nopython>,
                file,

@@ -5,7 +5,7 @@ libsemanage (3.4-99ragnarok01) unstable; urgency=medium
     - Built with clang.
     - adds extra hardening flags (see etc/dpkg/buildflags.conf)
 
- -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Fri, 19 Jan 2024 13:42:41 -0500
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Mon, 22 Jan 2024 11:59:29 -0500
 
 libsemanage (3.4-1) unstable; urgency=medium
 
