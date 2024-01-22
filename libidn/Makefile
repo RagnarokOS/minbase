@@ -1,10 +1,10 @@
 # Global Makefile for libidn
-# $Ragnarok: Makefile,v 1.1 2024/01/21 17:32:41 lecorbeau Exp $
+# $Ragnarok: Makefile,v 1.2 2024/01/22 17:18:28 lecorbeau Exp $
 
 PKG	= libidn
 VERSION	= 1.41
 
-DEBIAN	= changelog control rules
+DEBIAN	= changelog control rules libidn12.symbols
 
 # Building a deb package
 deb: src
