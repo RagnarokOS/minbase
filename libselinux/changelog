@@ -1,11 +1,11 @@
-libselinux (3.4-1) unstable; urgency=medium
+libselinux (3.4-99ragnarok01) unstable; urgency=medium
 
   * Initial build of libselinux for Ragnarok.
   * Differences with Debian's build:
     - Built with clang.
     - adds extra hardening flags (see etc/dpkg/buildflags.conf)
 
- -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Fri, 19 Jan 2024 12:50:02 -0500
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Mon, 22 Jan 2024 11:51:13 -0500
 
 libselinux (3.4-1) unstable; urgency=medium
 

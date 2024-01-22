@@ -1,10 +1,10 @@
 # Global Makefile for libselinux
-# $Ragnarok: Makefile,v 1.1 2024/01/19 17:51:37 lecorbeau Exp $
+# $Ragnarok: Makefile,v 1.2 2024/01/22 17:31:49 lecorbeau Exp $
 
 PKG	= libselinux
 VERSION	= 3.4
 
-DEBIAN	= changelog control rules
+DEBIAN	= changelog control rules libselinux1.symbols
 
 # Building a deb package
 deb: src
