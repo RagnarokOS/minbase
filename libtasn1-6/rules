@@ -1,0 +1,65 @@
+#! /usr/bin/make -f
+# Build the libtasn1 packages for Debian.
+
+# Ragnarok: CC is clang.
+export CC=clang
+
+export DEB_BUILD_MAINT_OPTIONS := hardening=+bindnow
+export DEB_CFLAGS_MAINT_APPEND := -Wall
+export DEB_CXXFLAGS_MAINT_APPEND := -Wall
+# for DEB_VERSION
+include /usr/share/dpkg/pkg-info.mk
+
+AMCONFBUILDINDEP := $(shell if dh_listpackages | grep -q libtasn1-doc ; \
+        then echo "--enable-gtk-doc" ; \
+        else echo "--disable-gtk-doc"; fi)
+
+override_dh_auto_configure:
+	# touch-magic when cross-compiling
+	if [ \
+		`dpkg-architecture -q DEB_BUILD_GNU_TYPE` != \
+		`dpkg-architecture -q DEB_HOST_GNU_TYPE` \
+		] ; then \
+		touch `grep -l help2man doc/*.[18]` ;\
+		fi
+
+	dh_auto_configure --verbose -- \
+	--disable-silent-rules \
+	--enable-ld-version-script --with-packager=Debian \
+	--disable-gtk-doc-pdf \
+	--with-packager-bug-reports=https://bugs.debian.org/ \
+	--with-packager-version="$(DEB_VERSION)" \
+	$(AMCONFBUILDINDEP)
+
+override_dh_autoreconf:
+	if ! dh_listpackages | grep -q libtasn1-doc ; \
+		then env GTKDOCIZE="echo DISABLED running gtkdocize" \
+			dh_autoreconf --verbose ; \
+		else \
+			dh_autoreconf --verbose ; \
+		fi
+
+override_dh_makeshlibs:
+	dh_makeshlibs -V 'libtasn1-6 (>=4.16-0)' -- -c4
+
+override_dh_auto_build:
+	dh_auto_build --verbose
+ifeq ($(filter --disable-gtk-doc,$(AMCONFBUILDINDEP)),)
+	if ! test -e doc/libtasn1.pdf ; then \
+		$(MAKE) pdf ; fi
+	if ! test -e doc/libtasn1.html ; then \
+		$(MAKE) html ; fi
+endif
+
+override_dh_compress:
+	dh_compress --exclude=libtasn1.pdf
+
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS
+
+override_dh_auto_clean:
+	if test -e Makefile ; then \
+		dh_auto_clean ; fi
+
+%:
+	dh $@
