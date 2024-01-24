@@ -1,0 +1,8 @@
+Package: libsystemd0
+Version: 999+ragnarok01
+Maintainer: Ian LeCorbeau <I-LeCorbeau@protonmail.com>
+Architecture: amd64
+Description: dummy package for libsystemd0
+ Dummy package for libsystemd0. This contains nothing and
+ only exists to satisfy a dependency when debootstraping
+ the base system.
