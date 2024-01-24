@@ -5,7 +5,7 @@ libzstd (1.5.4+dfsg2-99ragnarok01) unstable; urgency=medium
     - Built with Clang.
     - Adds extra hardening flags (see etc/dpkg/buildflags.conf).
 
- -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Wed, 24 Jan 2024 11:37:41 -0500
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Wed, 24 Jan 2024 12:28:41 -0500
 
 libzstd (1.5.4+dfsg2-5) unstable; urgency=medium
 

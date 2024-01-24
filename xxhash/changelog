@@ -5,7 +5,7 @@ xxhash (0.8.1-99ragnarok01) unstable; urgency=medium
     - Built with Clang.
     - Adds extra hardening flags (see etc/dpkg/buildflags.conf).
 
- -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Wed, 24 Jan 2024 11:31:14 -0500
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Wed, 24 Jan 2024 12:53:43 -0500
 
 xxhash (0.8.1-1) unstable; urgency=medium
 
