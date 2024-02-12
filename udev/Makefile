@@ -1,8 +1,8 @@
 # Global Makefile for udev related packages
-# $Ragnarok: Makefile,v 1.1 2024/01/23 18:45:25 lecorbeau Exp $
+# $Ragnarok: Makefile,v 1.1 2024/01/23 18:45:25 lecorbeau Exp i $
 
 PKG	= systemd
-VERSION	= 252.19
+VERSION	= 252.22
 
 DEBIAN	= changelog control rules libudev1.symbols libsystemd0.symbols
 
