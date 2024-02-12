@@ -1,3 +1,19 @@
+gnutls28 (3.7.9-99ragnarok1-1) unstable; urgency=medium
+
+  * Update to match latest Debian version.
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Mon, 12 Feb 2024 11:12:15 -0500
+
+gnutls28 (3.7.9-2+deb12u2) bookworm; urgency=medium
+
+  * Cherrypick two CVE fixes from 3.8.3:
+    Fix assertion failure when verifying a certificate chain with a cycle of
+    cross signatures. CVE-2024-0567 GNUTLS-SA-2024-01-09 Closes: #1061045
+    Fix more timing side-channel inside RSA-PSK key exchange. CVE-2024-0553
+    GNUTLS-SA-2024-01-14 Closes: #1061046
+
+ -- Andreas Metzler <ametzler@debian.org>  Fri, 19 Jan 2024 18:28:37 +0100
+
 gnutls28 (3.7.9-99ragnarok01) unstable; urgency=medium
 
   * Initial build of gnutls28 for Ragnarok.
