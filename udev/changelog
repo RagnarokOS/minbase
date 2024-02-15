@@ -2,7 +2,7 @@ systemd (252.22-99~deb12u1ragnarok01) unstable; urgency=medium
 
   * Update to match with Debian's version.
 
- -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Tue, 23 Jan 2024 13:23:33 -0500
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Thu, 15 Feb 2024 13:12:11 -0500
 
 systemd (252.22-1~deb12u1) bookworm; urgency=medium
 
