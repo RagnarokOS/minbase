@@ -1,0 +1,45 @@
+#! /usr/bin/make -f
+%:
+	dh $@ --builddirectory=debian/build
+
+include /usr/share/dpkg/architecture.mk
+
+dtmp    = debian/man-db
+
+export DEB_BUILD_MAINT_OPTIONS := hardening=+all
+# Use DT_RUNPATH rather than DT_RPATH, so that LD_LIBRARY_PATH works properly.
+export DEB_LDFLAGS_MAINT_APPEND := -Wl,--enable-new-dtags
+
+# --libdir is set here because debhelper defaults to using
+# multiarch paths at compat level 9, which is a reasonable choice in general
+# but unnecessary here.
+# Ragnarok: adding a prefix to the program names to avoid conflicts with mandoc.
+# 'db' is the prefix rather than suffix since some programs already end in 'db'.
+override_dh_auto_configure:
+	dh_auto_configure -- \
+	            --libdir=\$${prefix}/lib \
+	            --enable-setuid \
+		    --with-program-prefix=db \
+	            --with-device=latin1 --enable-mb-groff \
+	            --with-config-file=/etc/manpath.config \
+	            --with-browser=www-browser --with-pager=pager \
+	            --with-col=col --with-vgrind=vgrind --with-grap=grap \
+	            --with-compress=compress --with-bzip2=bzip2 \
+		    --with-xz=xz --with-lzip=lzip --with-lzma=lzma \
+		    --with-zstd=zstd \
+		    --with-sections='1 n l 8 3 0 2 3type 3posix 3pm 3perl 3am 5 4 9 6 7'
+
+override_dh_auto_test:
+	VERBOSE=1 dh_auto_test
+
+execute_after_dh_auto_install:
+	rm -f $(dtmp)/usr/lib/man-db/*.la
+
+execute_after_dh_install:
+	dh_apparmor --profile-name=usr.bin.man
+
+execute_after_dh_fixperms:
+	chown man:man $(dtmp)/var/cache/man
+
+# Our shared libraries are private.
+override_dh_makeshlibs:

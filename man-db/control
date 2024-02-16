@@ -1,0 +1,40 @@
+Source: man-db
+Section: doc
+Priority: important
+Maintainer: Ian LeCorbeau <I-LeCorbeau@protonmail.com>
+XSBC-Original-Maintainer: Colin Watson <cjwatson@debian.org>
+Standards-Version: 3.9.8
+Build-Depends: autopoint,
+               bsdextrautils | bsdmainutils (<< 12.1.1~),
+               debhelper-compat (= 13),
+               dh-apparmor,
+               flex,
+               groff,
+               libgdbm-dev,
+               libpipeline-dev,
+               libseccomp-dev [amd64 arm64 armel armhf hppa i386 mips mips64el mipsel powerpc powerpcspe ppc64 ppc64el s390x x32],
+               pkg-config,
+               po4a,
+               zlib1g-dev,
+Homepage: https://man-db.gitlab.io/man-db/
+Vcs-Git: https://salsa.debian.org/debian/man-db.git
+Vcs-Browser: https://salsa.debian.org/debian/man-db
+Rules-Requires-Root: binary-targets
+
+Package: man-db
+Architecture: any
+Depends: bsdextrautils | bsdmainutils (<< 12.1.1~),
+         groff-base,
+         ${misc:Depends},
+         ${shlibs:Depends},
+Suggests: apparmor, groff, less, www-browser
+Provides: man, man-browser
+Replaces: nlsutils
+Multi-Arch: foreign
+Description: tools for reading manual pages
+ This package provides the man command, the primary way of examining the
+ system help files (manual pages). Other utilities provided include the
+ whatis and apropos commands for searching the manual page database, the
+ manpath utility for determining the manual page search path, and the
+ maintenance utilities mandb, catman and zsoelim. man-db uses the groff
+ suite of programs to format and display the manual pages.
