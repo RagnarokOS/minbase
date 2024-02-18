@@ -15,5 +15,5 @@ backup:*:34:34:backup:/var/backups:/usr/sbin/nologin
 list:*:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
 irc:*:39:39:ircd:/run/ircd:/usr/sbin/nologin
 _apt:*:42:65534::/nonexistent:/usr/sbin/nologin
-_sysupdate:x:999:999::/nonexistent:/usr/sbin/nologin
+_sysupdate:*:999:999::/nonexistent:/usr/sbin/nologin
 nobody:*:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
