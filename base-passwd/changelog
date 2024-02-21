@@ -1,3 +1,9 @@
+base-passwd (3.6.1-99ragnarok1-1) unstable; urgency=medium
+
+  * Fix error in passwd.master.
+
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Wed, 21 Feb 2024 11:49:05 -0500
+
 base-passwd (3.6.1-99ragnarok01) unstable; urgency=medium
 
   * Initial build of base-passwd for Ragnarok.
