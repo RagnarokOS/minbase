@@ -5,6 +5,7 @@ Maintainer: Ian LeCorbeau <I-LeCorbeau@protonmail.com>
 XSBC-Original-Maintainer: Colin Watson <cjwatson@debian.org>
 Standards-Version: 3.9.8
 Build-Depends: debhelper-compat (= 13),
+	       docbook,
                docbook-utils,
                libdebconfclient0-dev,
                libselinux1-dev [linux-any],
