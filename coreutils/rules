@@ -6,7 +6,9 @@
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/default.mk
 
-DEB_CFLAGS_MAINT_APPEND = -DSYSLOG_SUCCESS -DSYSLOG_FAILURE -DSYSLOG_NON_ROOT
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+export DEB_CFLAGS_MAINT_APPEND = -flto=thin -DSYSLOG_SUCCESS -DSYSLOG_FAILURE -DSYSLOG_NON_ROOT
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,-O2 -flto=thin
 
 # Renesas SH(sh4) need -mieee option.
 ifeq ($(DEB_HOST_ARCH_CPU),sh4)
